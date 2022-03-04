@@ -5,3 +5,6 @@ yarn.lock
 package-lock.json
 tests
 dist
+dist/src
+asked-client
+asked-client.zip
