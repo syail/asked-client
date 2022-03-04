@@ -55,10 +55,10 @@ export class RequestClient {
 
     public async follow(
         cookie: string,
-        id: string
+        userId: number
     ): Promise<RequestResult<void>> {
         let encoded = new URLSearchParams({
-            num: id,
+            num: userId.toString(),
         }).toString();
 
         try {
@@ -71,6 +71,40 @@ export class RequestClient {
                         "User-Agent":
                             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36",
                         Cookie: cookie,
+                    },
+                }
+            );
+
+            if (result.data.includes("success")) {
+                return {
+                    success: true,
+                };
+            }
+        } catch {}
+        return { success: false };
+    }
+
+    public async addComment(
+        id: string,
+        comment: string,
+        makarong: string = "-1"
+    ) {
+        let encoded = new URLSearchParams({
+            id: id,
+            content: comment,
+            makarong_bat: makarong,
+            show_user: "0",
+        });
+
+        try {
+            let result = await this.client.post<any, AxiosResponse<string>>(
+                "/query.php?query=0",
+                encoded,
+                {
+                    headers: {
+                        "User-Agent":
+                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0",
+                        "Content-Type": "application/x-www-form-urlencoded",
                     },
                 }
             );

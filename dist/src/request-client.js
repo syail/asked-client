@@ -41,9 +41,9 @@ class RequestClient {
         catch (_b) { }
         return { success: false };
     }
-    async follow(cookie, id) {
+    async follow(cookie, userId) {
         let encoded = new URLSearchParams({
-            num: id,
+            num: userId.toString(),
         }).toString();
         try {
             let result = await this.client.post("/query.php?query=22", encoded, {
@@ -51,6 +51,29 @@ class RequestClient {
                     "Content-Type": "application/x-www-form-urlencoded",
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36",
                     Cookie: cookie,
+                },
+            });
+            if (result.data.includes("success")) {
+                return {
+                    success: true,
+                };
+            }
+        }
+        catch (_a) { }
+        return { success: false };
+    }
+    async addComment(id, comment, makarong = "-1") {
+        let encoded = new URLSearchParams({
+            id: id,
+            content: comment,
+            makarong_bat: makarong,
+            show_user: "0",
+        });
+        try {
+            let result = await this.client.post("/query.php?query=0", encoded, {
+                headers: {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0",
+                    "Content-Type": "application/x-www-form-urlencoded",
                 },
             });
             if (result.data.includes("success")) {
