@@ -1,3 +1,5 @@
+#npm i --save asked-client 
+
 ## example
 
 ```ts
