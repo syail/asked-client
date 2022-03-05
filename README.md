@@ -3,9 +3,9 @@
 ## example
 
 ```ts
-import { RequestClient } from "asked-client";
+import { AskedClient } from "asked-client";
 
-const client = RequestClient.create();
+const client = AskedClient.create();
 
 let result = client.signUp().then((result) => {
     console.log(result);

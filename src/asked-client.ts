@@ -6,7 +6,7 @@ import axios, {
 } from "axios";
 import { getRandomString } from "./util";
 
-export class RequestClient {
+export class AskedClient {
     private readonly client: AxiosInstance;
 
     constructor(
@@ -123,7 +123,7 @@ export class RequestClient {
     }
 
     public static create() {
-        return new RequestClient({ timeout: 3000 });
+        return new AskedClient({ timeout: 3000 });
     }
 }
 

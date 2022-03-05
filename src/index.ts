@@ -1,3 +1,3 @@
-import { RequestClient } from "./request-client";
+import { AskedClient } from "./asked-client";
 
-export { RequestClient };
+export { AskedClient };
