@@ -9,7 +9,24 @@
     "scripts": {
         "build": "tsc"
     },
-    "exports": {
-        ".": "./dist/src"
-    }
+    "name": "asked-client",
+    "description": "```ts\r import { RequestClient } from \"./asked-client/dist/src\";",
+    "version": "1.0.0",
+    "main": "dist/src/index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/riarisans/asked-client.git"
+    },
+    "keywords": [
+        "asked"
+    ],
+    "author": "riarisans",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/riarisans/asked-client/issues"
+    },
+    "homepage": "https://github.com/riarisans/asked-client#readme"
 }

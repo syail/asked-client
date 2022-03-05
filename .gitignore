@@ -8,3 +8,4 @@ dist
 dist/src
 asked-client
 asked-client.zip
+.npmignore
